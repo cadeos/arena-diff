@@ -1,0 +1,66 @@
+{
+  "name": "arena-diff",
+  "version": "0.1.0",
+  "description": "Fast word-level text diff with a C/WASM core and O(N+M) arena memory",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "files": [
+    "src/index.js",
+    "src/index.d.ts",
+    "src/wasm/diff.wasm.js",
+    "assets/arena-diff-diagram.png",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "bash scripts/build.sh",
+    "test": "node test/smoke.test.js && node test/memory-grow.test.js && node test/guided-roundtrip.test.js && node test/result-stability.test.js && node test/tei-diff.test.js",
+    "prepublishOnly": "npm run build && npm test",
+    "research:benchmark": "node research/benchmark.js",
+    "research:compare": "node --expose-gc research/benchmark-compare.js",
+    "research:compare:quick": "node --expose-gc research/benchmark-compare.js --quick",
+    "research:memory": "node --expose-gc research/benchmark-memory.js",
+    "research:memory:quick": "node --expose-gc research/benchmark-memory.js --quick",
+    "research:big-book": "node --expose-gc research/big-book-benchmark.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "author": "cadeos (https://github.com/cadeos)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cadeos/arena-diff.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cadeos/arena-diff/issues"
+  },
+  "homepage": "https://github.com/cadeos/arena-diff#readme",
+  "keywords": [
+    "diff",
+    "text-diff",
+    "word-diff",
+    "wasm",
+    "webassembly",
+    "myers",
+    "collate"
+  ],
+  "devDependencies": {
+    "@fishan/myers-core-diff": "^1.0.2-a",
+    "diff": "^9.0.0",
+    "diff-match-patch-es": "^1.0.1",
+    "diff-native": "^0.1.0",
+    "diff-sequences": "^29.6.3",
+    "fast-diff": "^1.3.0",
+    "fast-myers-diff": "^3.2.0",
+    "patience-diff": "^0.0.2"
+  }
+}

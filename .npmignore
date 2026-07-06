@@ -1,0 +1,9 @@
+native/
+scripts/
+research/
+test/
+wasi-sdk*/
+wasi-sdk.tar.gz
+.gitignore
+benchmark-compare-output.txt
+*.o

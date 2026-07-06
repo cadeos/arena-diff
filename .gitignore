@@ -1,0 +1,7 @@
+node_modules/
+diff.o
+wasi-sdk.tar.gz
+wasi-sdk-*/
+benchmark-compare-output.txt
+.DS_Store
+docs/
